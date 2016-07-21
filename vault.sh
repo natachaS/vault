@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 pkcs7=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/pkcs7 | paste -s -d '')
 result=$(curl -X POST "http://10.0.1.161:8200/v1/auth/aws-ec2/login" -d '{"role":"myapp","pkcs7":"'"$pkcs7"'","nonce":"vault-client-nonce"}')
 token=$( jq -r .auth.client_token <<< "$result" )
