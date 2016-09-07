@@ -15,5 +15,5 @@ echo "     Token: $token"
 echo "  Policies:" $policies
 
 echo "...testing out the auth....what is my favorite color ??? It's..."
-color=$(curl -s http://172.31.138.175:8200/v1/secret/dev/app/dev/favorites -H "X-Vault-Token:$token"| jq -r .data.color)
+color=$(curl -s http://172.31.138.175:8200/v1/secret/env/app/dev/favorites -H "X-Vault-Token:$token"| jq -r .data.color)
 echo $color
